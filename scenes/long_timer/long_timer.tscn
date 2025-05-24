@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://pc1ladg6pwjx"]
+
+[ext_resource type="Script" uid="uid://ix457ymibn5d" path="res://scenes/long_timer/long_timer.gd" id="1_pkg6y"]
+
+[node name="LongTimer" type="Timer"]
+one_shot = true
+ignore_time_scale = true
+script = ExtResource("1_pkg6y")

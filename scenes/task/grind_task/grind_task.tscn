@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdki7nok5i071"]
+
+[ext_resource type="Script" uid="uid://bbx8reun8y705" path="res://scenes/task/grind_task/grind_task.gd" id="1_fy76v"]
+
+[node name="GrindTask" type="Node2D"]
+script = ExtResource("1_fy76v")
+metadata/_custom_type_script = "uid://b3v0ulgc5s4nt"
