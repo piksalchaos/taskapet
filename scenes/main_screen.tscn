@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c4cbeo5tuhomm"]
+[gd_scene load_steps=16 format=3 uid="uid://c4cbeo5tuhomm"]
 
 [ext_resource type="PackedScene" uid="uid://bql8brnkx5eml" path="res://scenes/sidebar/side_bar.tscn" id="1_7fvvs"]
 [ext_resource type="Script" uid="uid://ddgvtn2k0cqlb" path="res://scenes/main_screen.gd" id="1_w87pm"]
@@ -47,6 +47,34 @@ _data = {
 &"RESET": SubResource("Animation_w87pm"),
 &"idle": SubResource("Animation_lushf")
 }
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_il54y"]
+bg_color = Color(0.597126, 0.656086, 0.586636, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4takm"]
+bg_color = Color(0.768465, 0.951759, 0.692817, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pn685"]
+bg_color = Color(0.725346, 0.710618, 0.57331, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u38ol"]
+bg_color = Color(0.946249, 0.899721, 0.56836, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
 
 [node name="MainScreen" type="Control"]
 layout_mode = 3
@@ -126,6 +154,43 @@ libraries = {
 &"": SubResource("AnimationLibrary_a46j4")
 }
 autoplay = "idle"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainDisplayContainer/PetRoom"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.7
+anchor_right = 0.8
+anchor_bottom = 0.9
+offset_left = 0.199997
+offset_top = -0.400024
+offset_right = -0.16803
+offset_bottom = 0.039978
+theme_override_constants/separation = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="MainDisplayContainer/PetRoom/VBoxContainer"]
+layout_mode = 2
+text = "Health:"
+
+[node name="HealthBar" type="ProgressBar" parent="MainDisplayContainer/PetRoom/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_il54y")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4takm")
+value = 30.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="MainDisplayContainer/PetRoom/VBoxContainer"]
+layout_mode = 2
+text = "Progress until next level:"
+
+[node name="Level Bar" type="ProgressBar" parent="MainDisplayContainer/PetRoom/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_pn685")
+theme_override_styles/fill = SubResource("StyleBoxFlat_u38ol")
+value = 30.0
+metadata/_edit_use_anchors_ = true
 
 [node name="ProjectCreator" type="Control" parent="."]
 visible = false
