@@ -185,7 +185,7 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 text = "Progress until next level:"
 
-[node name="Level Bar" type="ProgressBar" parent="MainDisplayContainer/PetRoom/VBoxContainer"]
+[node name="LevelBar" type="ProgressBar" parent="MainDisplayContainer/PetRoom/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_pn685")
 theme_override_styles/fill = SubResource("StyleBoxFlat_u38ol")
