@@ -77,6 +77,11 @@ size_flags_horizontal = 3
 [node name="TaskDisplay" parent="TaskContainer/TaskList" instance=ExtResource("2_kusfh")]
 layout_mode = 2
 
+[node name="Button" type="Button" parent="TaskContainer/TaskList"]
+layout_mode = 2
+text = "Add task"
+flat = true
+
 [node name="VSeparator2" type="VSeparator" parent="."]
 layout_mode = 2
 

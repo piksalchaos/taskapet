@@ -1,10 +1,18 @@
 [gd_scene format=3 uid="uid://b0p3vt5lgwf6"]
 
-[node name="TaskDisplay" type="HBoxContainer"]
+[node name="TaskDisplay" type="VBoxContainer"]
+offset_right = 179.0
+offset_bottom = 39.0
 
-[node name="CheckBox" type="CheckBox" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="."]
+[node name="CheckBox" type="CheckBox" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 text = "Take out the trash"
+
+[node name="HSeparator" type="HSeparator" parent="."]
+layout_mode = 2
