@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6qrdcektk7v7"]
+
+[ext_resource type="Script" uid="uid://cdg8wt7xg0fai" path="res://scenes/task/timed_task/timed_task.gd" id="1_ihy3v"]
+[ext_resource type="Script" uid="uid://ix457ymibn5d" path="res://scenes/long_timer/long_timer.gd" id="2_7fibb"]
+
+[node name="TimedTask" type="Node2D"]
+script = ExtResource("1_ihy3v")
+metadata/_custom_type_script = "uid://b3v0ulgc5s4nt"
+
+[node name="TimedTaskTimer" type="Timer" parent="."]
+script = ExtResource("2_7fibb")
+metadata/_custom_type_script = "uid://ix457ymibn5d"
+
+[connection signal="timeout" from="TimedTaskTimer" to="." method="_on_timed_task_timer_timeout"]
