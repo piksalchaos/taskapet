@@ -27,9 +27,6 @@ func on_start():
 func on_stop():
 	timer.stop()
 
-func finish():
-	remove()
-
 func on_succeed():
 	remove()
 

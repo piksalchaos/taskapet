@@ -1,8 +1,6 @@
 class_name Task extends Node2D
 
-var title: String = "Untitled task"
-var description: String
-var coins: int
+var title: String
 var pts: int
 
 var is_started: bool = false

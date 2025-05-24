@@ -1,5 +1,9 @@
 extends Node
 
+enum IMPORTANCE {
+	low, middle, high
+}
+
 func sec_to_hms(sec: int) -> Vector3i:
 	var h: int = sec / (60 * 60)
 	var m: int = sec % (60 * 60) / 60

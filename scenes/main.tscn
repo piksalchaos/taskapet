@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnwjx62g50qhh"]
+
+[ext_resource type="Script" uid="uid://bcy5ooebs7ob6" path="res://scenes/pet/pet.gd" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://dgg65lfu0rnyo" path="res://scenes/task/task_container/task_container.gd" id="2_0wfyh"]
+
+[node name="Main" type="Node"]
+
+[node name="Pet" type="Node2D" parent="."]
+script = ExtResource("1_o5qli")
+metadata/_custom_type_script = "uid://bcy5ooebs7ob6"
+
+[node name="TaskContainer" type="Node2D" parent="." node_paths=PackedStringArray("pet")]
+script = ExtResource("2_0wfyh")
+pet = NodePath("../Pet")
+metadata/_custom_type_script = "uid://dgg65lfu0rnyo"
