@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4cbeo5tuhomm"]
+
+[ext_resource type="PackedScene" uid="uid://bql8brnkx5eml" path="res://scenes/sidebar/side_bar.tscn" id="1_7fvvs"]
+[ext_resource type="PackedScene" uid="uid://b0p3vt5lgwf6" path="res://scenes/task_display.tscn" id="2_kusfh"]
+
+[node name="MainScreen" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SideBarContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 6
+
+[node name="SideBar" parent="SideBarContainer" instance=ExtResource("1_7fvvs")]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="."]
+layout_mode = 2
+
+[node name="TaskContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ProjectNameLabel" type="Label" parent="TaskContainer"]
+layout_mode = 2
+text = "Chores"
+
+[node name="TaskList" type="VBoxContainer" parent="TaskContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TaskDisplay" parent="TaskContainer/TaskList" instance=ExtResource("2_kusfh")]
+layout_mode = 2
+
+[node name="VSeparator2" type="VSeparator" parent="."]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3

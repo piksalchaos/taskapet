@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://bql8brnkx5eml"]
+
+[ext_resource type="Theme" uid="uid://diualrkk3oo8h" path="res://resources/theme.res" id="1_00alm"]
+[ext_resource type="PackedScene" uid="uid://bd5jwqd2poslr" path="res://scenes/sidebar/project_button.tscn" id="2_6gtg1"]
+
+[node name="SideBar" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_00alm")
+
+[node name="ProjectListHeading" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ProjectListLabel" type="Label" parent="ProjectListHeading"]
+layout_mode = 2
+text = "Projects"
+
+[node name="TextureButton" type="TextureButton" parent="ProjectListHeading"]
+layout_mode = 2
+
+[node name="ProjectList" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ProjectButton" parent="ProjectList" instance=ExtResource("2_6gtg1")]
+layout_mode = 2
+
+[node name="ProjectButton2" parent="ProjectList" instance=ExtResource("2_6gtg1")]
+layout_mode = 2
+text = "School"
+
+[node name="ProjectButton3" parent="ProjectList" instance=ExtResource("2_6gtg1")]
+layout_mode = 2
+text = "Hobbies"

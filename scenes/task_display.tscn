@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://b0p3vt5lgwf6"]
+
+[node name="TaskDisplay" type="HBoxContainer"]
+
+[node name="CheckBox" type="CheckBox" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Take out the trash"
