@@ -1,9 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4cbeo5tuhomm"]
+[gd_scene load_steps=12 format=3 uid="uid://c4cbeo5tuhomm"]
 
 [ext_resource type="PackedScene" uid="uid://bql8brnkx5eml" path="res://scenes/sidebar/side_bar.tscn" id="1_7fvvs"]
+[ext_resource type="Script" uid="uid://ddgvtn2k0cqlb" path="res://scenes/main_screen.gd" id="1_w87pm"]
 [ext_resource type="PackedScene" uid="uid://b0p3vt5lgwf6" path="res://scenes/task_display.tscn" id="2_kusfh"]
 [ext_resource type="Texture2D" uid="uid://c2lxgy6h1jpco" path="res://assets/images/pet_background.png" id="3_aum10"]
 [ext_resource type="Texture2D" uid="uid://c5gwi85fnlkqg" path="res://assets/images/pet.png" id="4_lushf"]
+[ext_resource type="Script" uid="uid://d3jl5rcqixih" path="res://scenes/project_creator.gd" id="6_23dc1"]
+[ext_resource type="Theme" uid="uid://diualrkk3oo8h" path="res://resources/theme.res" id="6_a46j4"]
+[ext_resource type="Script" uid="uid://cre2gkqdsip7d" path="res://scenes/task_creator.gd" id="8_il54y"]
 
 [sub_resource type="Animation" id="Animation_lushf"]
 resource_name = "idle"
@@ -44,55 +48,65 @@ _data = {
 &"idle": SubResource("Animation_lushf")
 }
 
-[node name="MainScreen" type="HBoxContainer"]
+[node name="MainScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w87pm")
+
+[node name="MainDisplayContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SideBarContainer" type="MarginContainer" parent="."]
+[node name="SideBarContainer" type="MarginContainer" parent="MainDisplayContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_constants/margin_left = 6
 
-[node name="SideBar" parent="SideBarContainer" instance=ExtResource("1_7fvvs")]
+[node name="SideBar" parent="MainDisplayContainer/SideBarContainer" instance=ExtResource("1_7fvvs")]
 layout_mode = 2
 
-[node name="VSeparator" type="VSeparator" parent="."]
+[node name="VSeparator" type="VSeparator" parent="MainDisplayContainer"]
 layout_mode = 2
 
-[node name="TaskContainer" type="VBoxContainer" parent="."]
+[node name="TaskContainer" type="VBoxContainer" parent="MainDisplayContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ProjectNameLabel" type="Label" parent="TaskContainer"]
+[node name="ProjectNameLabel" type="Label" parent="MainDisplayContainer/TaskContainer"]
 layout_mode = 2
 text = "Chores"
 
-[node name="TaskList" type="VBoxContainer" parent="TaskContainer"]
+[node name="TaskList" type="VBoxContainer" parent="MainDisplayContainer/TaskContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TaskDisplay" parent="TaskContainer/TaskList" instance=ExtResource("2_kusfh")]
+[node name="TaskDisplay" parent="MainDisplayContainer/TaskContainer/TaskList" instance=ExtResource("2_kusfh")]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="TaskContainer/TaskList"]
+[node name="AddTaskButton" type="Button" parent="MainDisplayContainer/TaskContainer"]
 layout_mode = 2
 text = "Add task"
 flat = true
 
-[node name="VSeparator2" type="VSeparator" parent="."]
+[node name="VSeparator2" type="VSeparator" parent="MainDisplayContainer"]
 layout_mode = 2
 
-[node name="Room" type="TextureRect" parent="."]
+[node name="PetRoom" type="TextureRect" parent="MainDisplayContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("3_aum10")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="Pet" type="TextureRect" parent="Room"]
+[node name="Pet" type="TextureRect" parent="MainDisplayContainer/PetRoom"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.2
@@ -107,8 +121,170 @@ expand_mode = 1
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Room/Pet"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainDisplayContainer/PetRoom/Pet"]
 libraries = {
 &"": SubResource("AnimationLibrary_a46j4")
 }
 autoplay = "idle"
+
+[node name="ProjectCreator" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_23dc1")
+
+[node name="PanelContainer" type="PanelContainer" parent="ProjectCreator"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -163.0
+offset_top = -58.0
+offset_right = 163.0
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_a46j4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ProjectCreator/PanelContainer"]
+layout_mode = 2
+
+[node name="ProjectNameEdit" type="LineEdit" parent="ProjectCreator/PanelContainer/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "project name"
+
+[node name="CreateButton" type="Button" parent="ProjectCreator/PanelContainer/VBoxContainer"]
+layout_mode = 2
+disabled = true
+text = "Create new project"
+
+[node name="CancelButton" type="Button" parent="ProjectCreator/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Cancel"
+
+[node name="TaskCreator" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_il54y")
+
+[node name="PanelContainer" type="PanelContainer" parent="TaskCreator"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -163.0
+offset_top = -58.0
+offset_right = 163.0
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_a46j4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TaskCreator/PanelContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TaskCreator/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TaskNameEdit" type="LineEdit" parent="TaskCreator/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "task name"
+
+[node name="Label" type="Label" parent="TaskCreator/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Importance: "
+
+[node name="OptionButton" type="OptionButton" parent="TaskCreator/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "low"
+popup/item_0/id = 0
+popup/item_1/text = "middle"
+popup/item_1/id = 1
+popup/item_2/text = "high"
+popup/item_2/id = 2
+
+[node name="TabContainer" type="TabContainer" parent="TaskCreator/PanelContainer/VBoxContainer"]
+layout_mode = 2
+current_tab = 0
+
+[node name="Timed" type="VBoxContainer" parent="TaskCreator/PanelContainer/VBoxContainer/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Description" type="Label" parent="TaskCreator/PanelContainer/VBoxContainer/TabContainer/Timed"]
+layout_mode = 2
+text = "Your pet will only eat food if the task is finished in time.
+Good for things you want to get done quickly (e.g. chores)"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TaskCreator/PanelContainer/VBoxContainer/TabContainer/Timed"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TaskCreator/PanelContainer/VBoxContainer/TabContainer/Timed/HBoxContainer"]
+layout_mode = 2
+text = "Max time:"
+
+[node name="TimedTaskMinuteBox" type="SpinBox" parent="TaskCreator/PanelContainer/VBoxContainer/TabContainer/Timed/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+suffix = "minutes"
+
+[node name="CreateTimedTaskButton" type="Button" parent="TaskCreator/PanelContainer/VBoxContainer/TabContainer/Timed"]
+layout_mode = 2
+disabled = true
+text = "Create new timed task"
+
+[node name="Grind" type="VBoxContainer" parent="TaskCreator/PanelContainer/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Description" type="Label" parent="TaskCreator/PanelContainer/VBoxContainer/TabContainer/Grind"]
+layout_mode = 2
+text = "The more time spent on a task, the more your pet will eat.
+Good for things you want to put more time into (e.g. studying)"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TaskCreator/PanelContainer/VBoxContainer/TabContainer/Grind"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TaskCreator/PanelContainer/VBoxContainer/TabContainer/Grind/HBoxContainer"]
+layout_mode = 2
+text = "Goal time:"
+
+[node name="GrindTaskMinuteBox" type="SpinBox" parent="TaskCreator/PanelContainer/VBoxContainer/TabContainer/Grind/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+suffix = "minutes"
+
+[node name="CreateGrindTaskButton" type="Button" parent="TaskCreator/PanelContainer/VBoxContainer/TabContainer/Grind"]
+layout_mode = 2
+disabled = true
+text = "Create new grind task"
+
+[node name="CancelButton" type="Button" parent="TaskCreator/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Cancel"
+
+[connection signal="prompted_new_project" from="MainDisplayContainer/SideBarContainer/SideBar" to="." method="_on_side_bar_prompted_new_project"]
+[connection signal="pressed" from="MainDisplayContainer/TaskContainer/AddTaskButton" to="." method="_on_add_task_button_pressed"]
+[connection signal="text_changed" from="ProjectCreator/PanelContainer/VBoxContainer/ProjectNameEdit" to="ProjectCreator" method="_on_project_name_edit_text_changed"]
+[connection signal="pressed" from="ProjectCreator/PanelContainer/VBoxContainer/CreateButton" to="ProjectCreator" method="_on_create_button_pressed"]
+[connection signal="pressed" from="ProjectCreator/PanelContainer/VBoxContainer/CancelButton" to="ProjectCreator" method="_on_cancel_button_pressed"]
+[connection signal="text_changed" from="TaskCreator/PanelContainer/VBoxContainer/HBoxContainer/TaskNameEdit" to="TaskCreator" method="_on_task_name_edit_text_changed"]
+[connection signal="pressed" from="TaskCreator/PanelContainer/VBoxContainer/TabContainer/Timed/CreateTimedTaskButton" to="TaskCreator" method="_on_create_timed_task_button_pressed"]
+[connection signal="pressed" from="TaskCreator/PanelContainer/VBoxContainer/TabContainer/Grind/CreateGrindTaskButton" to="TaskCreator" method="_on_create_grind_task_button_pressed"]
+[connection signal="pressed" from="TaskCreator/PanelContainer/VBoxContainer/CancelButton" to="TaskCreator" method="_on_cancel_button_pressed"]

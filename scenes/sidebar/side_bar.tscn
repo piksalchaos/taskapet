@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bql8brnkx5eml"]
+[gd_scene load_steps=6 format=3 uid="uid://bql8brnkx5eml"]
 
 [ext_resource type="Theme" uid="uid://diualrkk3oo8h" path="res://resources/theme.res" id="1_00alm"]
+[ext_resource type="Script" uid="uid://ipni4sqad2e1" path="res://scenes/sidebar/side_bar.gd" id="2_2f5q2"]
 [ext_resource type="PackedScene" uid="uid://bd5jwqd2poslr" path="res://scenes/sidebar/project_button.tscn" id="2_6gtg1"]
 [ext_resource type="Texture2D" uid="uid://dj3u0j1kcjb55" path="res://assets/images/plus_normal.png" id="2_jkyyl"]
 [ext_resource type="Texture2D" uid="uid://17u6r3qx2div" path="res://assets/images/plus_hover.png" id="3_2f5q2"]
@@ -12,6 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_00alm")
+script = ExtResource("2_2f5q2")
 
 [node name="ProjectListHeading" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -21,7 +23,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Projects"
 
-[node name="TextureButton" type="TextureButton" parent="ProjectListHeading"]
+[node name="NewProjectButton" type="TextureButton" parent="ProjectListHeading"]
 custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
 texture_normal = ExtResource("2_jkyyl")
@@ -42,3 +44,5 @@ text = "School"
 [node name="ProjectButton3" parent="ProjectList" instance=ExtResource("2_6gtg1")]
 layout_mode = 2
 text = "Hobbies"
+
+[connection signal="pressed" from="ProjectListHeading/NewProjectButton" to="." method="_on_new_project_button_pressed"]
