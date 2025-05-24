@@ -7,6 +7,8 @@
 script = ExtResource("1_ihy3v")
 metadata/_custom_type_script = "uid://b3v0ulgc5s4nt"
 
-[node name="LongTimer" type="Timer" parent="."]
+[node name="TimedTaskTimer" type="Timer" parent="."]
 script = ExtResource("2_7fibb")
 metadata/_custom_type_script = "uid://ix457ymibn5d"
+
+[connection signal="timeout" from="TimedTaskTimer" to="." method="_on_timed_task_timer_timeout"]

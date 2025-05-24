@@ -1,14 +1,9 @@
 class_name LongTimer extends Timer
 
-@export var hours: int = 0
-@export var minutes: int = 0
+@export var seconds: int
 
-var seconds: int = 0
+func set_hms(h: int, m: int, s: int):
+	set_wait_time(Global.hms_to_sec(Vector3(h, m, s)))
 
-func set_time(hr: int, min: int):
-	self.hours = hr
-	self.minutes = min
-	
-	seconds = min * 60 + hours * 60 * 60
-	
-	set_wait_time(seconds)
+func get_hms_left() -> Vector3i:
+	return Global.sec_to_hms(time_left)
