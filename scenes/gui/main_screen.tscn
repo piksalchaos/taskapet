@@ -110,7 +110,6 @@ size_flags_horizontal = 3
 
 [node name="ProjectNameLabel" type="Label" parent="MainDisplayContainer/TaskContainer"]
 layout_mode = 2
-text = "Chores"
 
 [node name="TaskList" type="VBoxContainer" parent="MainDisplayContainer/TaskContainer"]
 layout_mode = 2
@@ -346,8 +345,10 @@ text = "Create new grind task"
 layout_mode = 2
 text = "Cancel"
 
+[connection signal="project_selected" from="MainDisplayContainer/SideBarContainer/SideBar" to="." method="_on_side_bar_project_selected"]
 [connection signal="prompted_new_project" from="MainDisplayContainer/SideBarContainer/SideBar" to="." method="_on_side_bar_prompted_new_project"]
 [connection signal="pressed" from="MainDisplayContainer/TaskContainer/AddTaskButton" to="." method="_on_add_task_button_pressed"]
+[connection signal="new_project_name" from="ProjectCreator" to="." method="_on_project_creator_new_project_name"]
 [connection signal="text_changed" from="ProjectCreator/PanelContainer/VBoxContainer/ProjectNameEdit" to="ProjectCreator" method="_on_project_name_edit_text_changed"]
 [connection signal="pressed" from="ProjectCreator/PanelContainer/VBoxContainer/CreateButton" to="ProjectCreator" method="_on_create_button_pressed"]
 [connection signal="pressed" from="ProjectCreator/PanelContainer/VBoxContainer/CancelButton" to="ProjectCreator" method="_on_cancel_button_pressed"]

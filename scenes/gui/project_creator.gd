@@ -3,7 +3,7 @@ extends Control
 @onready var create_button: Button = $PanelContainer/VBoxContainer/CreateButton
 @onready var project_name_edit: LineEdit = $PanelContainer/VBoxContainer/ProjectNameEdit
 
-signal new_project_name(String)
+signal new_project_name(name: String)
 
 func _on_project_name_edit_text_changed(new_text: String) -> void:
 	create_button.disabled = new_text.is_empty()
