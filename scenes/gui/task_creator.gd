@@ -14,12 +14,17 @@ signal new_timed_task_info(title: String, importance: Global.IMPORTANCE, minutes
 signal new_grind_task_info(title: String, importance: Global.IMPORTANCE, minutes:int)
 
 func check_if_task_is_ready():
-	var is_ready = task_name_edit.text.is_empty() \
-		and (timed_task_minute_box.value != 0.0 or grind_task_minute_box.value != 0.0)
-	create_timed_task_button.disabled = is_ready
-	create_grind_task_button.disabled = is_ready
+	var is_text_name_empty = task_name_edit.text.is_empty()
+	create_timed_task_button.disabled = is_text_name_empty or timed_task_minute_box.value <= 0.0
+	create_grind_task_button.disabled = is_text_name_empty or grind_task_minute_box.value <= 0.0
 
 func _on_task_name_edit_text_changed(new_text: String) -> void:
+	check_if_task_is_ready()
+
+func _on_timed_task_minute_box_value_changed(value: float) -> void:
+	check_if_task_is_ready()
+
+func _on_grind_task_minute_box_value_changed(value: float) -> void:
 	check_if_task_is_ready()
 
 func close() -> void:

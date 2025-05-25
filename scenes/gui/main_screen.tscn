@@ -273,6 +273,7 @@ text = "Importance: "
 
 [node name="ImportanceSelector" type="OptionButton" parent="TaskCreator/PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+selected = 0
 item_count = 3
 popup/item_0/text = "low"
 popup/item_0/id = 0
@@ -352,6 +353,8 @@ text = "Cancel"
 [connection signal="new_grind_task_info" from="TaskCreator" to="." method="_on_task_creator_new_grind_task_info"]
 [connection signal="new_timed_task_info" from="TaskCreator" to="." method="_on_task_creator_new_timed_task_info"]
 [connection signal="text_changed" from="TaskCreator/PanelContainer/VBoxContainer/HBoxContainer/TaskNameEdit" to="TaskCreator" method="_on_task_name_edit_text_changed"]
+[connection signal="value_changed" from="TaskCreator/PanelContainer/VBoxContainer/TabContainer/Timed/HBoxContainer/TimedTaskMinuteBox" to="TaskCreator" method="_on_timed_task_minute_box_value_changed"]
 [connection signal="pressed" from="TaskCreator/PanelContainer/VBoxContainer/TabContainer/Timed/CreateTimedTaskButton" to="TaskCreator" method="_on_create_timed_task_button_pressed"]
+[connection signal="value_changed" from="TaskCreator/PanelContainer/VBoxContainer/TabContainer/Grind/HBoxContainer/GrindTaskMinuteBox" to="TaskCreator" method="_on_grind_task_minute_box_value_changed"]
 [connection signal="pressed" from="TaskCreator/PanelContainer/VBoxContainer/TabContainer/Grind/CreateGrindTaskButton" to="TaskCreator" method="_on_create_grind_task_button_pressed"]
 [connection signal="pressed" from="TaskCreator/PanelContainer/VBoxContainer/CancelButton" to="TaskCreator" method="_on_cancel_button_pressed"]
