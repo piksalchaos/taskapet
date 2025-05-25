@@ -7,7 +7,7 @@ func _ready() -> void:
 	pet.exp_changed.connect(main_screen.change_exp)
 
 # session.time_changed.connect(gui.change_time)
-const SESSION = preload("res://scenes/task/task_container/session.tscn")
+const SESSION = preload("res://scenes/task/session/session.tscn")
 
 @onready var pet: Pet = $Pet
 @onready var session_container: Node = $SessionContainer
