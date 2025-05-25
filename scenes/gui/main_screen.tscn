@@ -171,25 +171,27 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Label2" type="Label" parent="MainDisplayContainer/PetRoom/VBoxContainer"]
 layout_mode = 2
-text = "Health:"
+text = "Health"
 
 [node name="HealthBar" type="ProgressBar" parent="MainDisplayContainer/PetRoom/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_il54y")
 theme_override_styles/fill = SubResource("StyleBoxFlat_4takm")
-value = 30.0
+max_value = 1.0
+value = 1.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="MainDisplayContainer/PetRoom/VBoxContainer"]
 layout_mode = 2
-text = "Progress until next level:"
+text = "sdijnbsaiushud"
 
 [node name="LevelBar" type="ProgressBar" parent="MainDisplayContainer/PetRoom/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_pn685")
 theme_override_styles/fill = SubResource("StyleBoxFlat_u38ol")
-value = 30.0
+max_value = 1.0
+value = 1.0
 metadata/_edit_use_anchors_ = true
 
 [node name="ProjectCreator" type="Control" parent="."]

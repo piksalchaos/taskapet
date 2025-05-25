@@ -10,6 +10,11 @@ var exp: int = 0
 signal health_changed(health, max_health)
 signal exp_changed(exp, max_exp, level)
 
+func _ready() -> void:
+	await get_tree().create_timer(0.5).timeout
+	health_changed.emit(health, MAX_HEALTH)
+	exp_changed.emit(exp, PTS_PER_LEVEL, level)
+
 func on_task_failed(pts):
 	health = clamp(health - pts, 0, MAX_HEALTH)
 	health_changed.emit(health, MAX_HEALTH)

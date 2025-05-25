@@ -16,6 +16,9 @@ enum PROGRESS {
 	HALF
 }
 
+func get_display_hms():
+	return hms_elapsed
+
 func on_start():
 	stopwatch.start()
 

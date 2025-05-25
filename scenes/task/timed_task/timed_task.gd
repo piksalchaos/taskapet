@@ -11,6 +11,9 @@ var hms_left: Vector3i
 func _process(delta: float) -> void:
 	hms_left = timer.get_hms_left()
 
+func get_display_hms():
+	return hms_left
+
 func set_hms(h: int, m: int, s: int):
 	hms_set = Vector3i(h, m, s)
 	timer.hms(h, m, s)
