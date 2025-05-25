@@ -16,12 +16,9 @@ func _on_child_entered_tree(node: Node) -> void:
 	node.started.connect(stop_tasks)
 	node.failed.connect(pet.on_task_failed)
 	node.succeeded.connect(pet.on_task_succeeded)
-	# node.time_changed.connect(on_task_time_changed)
 	
 	new_day.connect(node.on_new_day)
 
-# func on_task_time_changed(task: Task, h: int, m: int, s: int):
-# 	time_changed.emit(task, h, m, s)
 
 func stop_tasks(started_task: Task):
 	for task in get_children():

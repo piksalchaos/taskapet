@@ -6,7 +6,6 @@ func _ready() -> void:
 	pet.health_changed.connect(main_screen.change_health)
 	pet.exp_changed.connect(main_screen.change_exp)
 
-# session.time_changed.connect(gui.change_time)
 const SESSION = preload("res://scenes/task/session/session.tscn")
 
 @onready var pet: Pet = $Pet

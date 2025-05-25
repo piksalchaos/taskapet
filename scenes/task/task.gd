@@ -8,7 +8,7 @@ var is_started: bool = false
 signal started(task: Task)
 signal failed(pts: int)
 signal succeeded(pts: int)
-signal time_changed(task: Task, h: int, m: int, s: int)
+signal time_changed(h: int, m: int, s: int)
 
 var current_hms: Vector3i
 
@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 	
 	# if a second has passed, update time display
 	if current_hms[2] != hms[2]: 
-		time_changed.emit(self, hms[0], hms[1], hms[2])
+		time_changed.emit(hms[0], hms[1], hms[2])
 		current_hms = hms
 
 func start():
