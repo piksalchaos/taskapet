@@ -60,5 +60,5 @@ func _on_task_creator_new_timed_task_info(title: String, importance: int, minute
 
 func add_to_task_list(task: Task):
 	var task_display = TASK_DISPLAY.instantiate()
-	#task_display.task = task
+	task_display.task = task
 	task_list.add_child(task_display)

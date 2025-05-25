@@ -12,7 +12,7 @@ signal task_created(task: Task)
 
 func _on_child_entered_tree(node: Node) -> void:
 	if not node is Task: return
-	"res://scenes/task/task_container/session.tscn"
+	
 	node.started.connect(stop_tasks)
 	node.failed.connect(pet.on_task_failed)
 	node.succeeded.connect(pet.on_task_succeeded)
@@ -21,6 +21,7 @@ func _on_child_entered_tree(node: Node) -> void:
 
 
 func stop_tasks(started_task: Task):
+	print(started_task)
 	for task in get_children():
 		if task != started_task:
 			task.stop()
