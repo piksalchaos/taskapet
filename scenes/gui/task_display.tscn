@@ -1,8 +1,12 @@
-[gd_scene format=3 uid="uid://b0p3vt5lgwf6"]
+[gd_scene load_steps=3 format=3 uid="uid://b0p3vt5lgwf6"]
+
+[ext_resource type="Texture2D" uid="uid://cv7exl4lnbmuc" path="res://assets/images/play-button.png" id="1_chhdj"]
+[ext_resource type="Script" uid="uid://cay8bpay7qc6u" path="res://scenes/gui/task_display.gd" id="1_l1k3e"]
 
 [node name="TaskDisplay" type="VBoxContainer"]
 offset_right = 179.0
 offset_bottom = 39.0
+script = ExtResource("1_l1k3e")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -16,6 +20,15 @@ text = "unnamed task"
 
 [node name="Time" type="Label" parent="HBoxContainer"]
 layout_mode = 2
+
+[node name="PlayButton" type="TextureButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture_normal = ExtResource("1_chhdj")
+ignore_texture_size = true
+stretch_mode = 4
 
 [node name="HSeparator" type="HSeparator" parent="."]
 layout_mode = 2
