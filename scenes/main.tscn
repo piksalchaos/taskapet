@@ -14,4 +14,7 @@ script = ExtResource("1_sugp2")
 [node name="MainScreen" parent="." instance=ExtResource("4_jyhfs")]
 
 [connection signal="child_entered_tree" from="SessionContainer" to="." method="_on_session_container_child_entered_tree"]
+[connection signal="new_grind_task_info" from="MainScreen" to="." method="_on_main_screen_new_grind_task_info"]
 [connection signal="new_project_name" from="MainScreen" to="." method="_on_main_screen_new_project_name"]
+[connection signal="new_timed_task_info" from="MainScreen" to="." method="_on_main_screen_new_timed_task_info"]
+[connection signal="project_selected" from="MainScreen" to="." method="_on_main_screen_project_selected"]

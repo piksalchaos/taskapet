@@ -7,6 +7,7 @@ class_name Session extends Node2D
 @onready var timed_task_scene = preload("res://scenes/task/timed_task/timed_task.tscn")
 
 signal new_day()
+signal task_created(task: Task)
 
 func _on_child_entered_tree(node: Node) -> void:
 	if not node is Task: return
@@ -35,6 +36,7 @@ func add_grind_task(title: String, importance: Global.IMPORTANCE, minutes:int):
 	task.goal_hms = Vector3i(0, minutes, 0)
 	task.goal_time = minutes * 60
 	add_child(task)
+	task_created.emit(task)
 
 func add_timed_task(title: String, importance: Global.IMPORTANCE, minutes:int):
 	var task = timed_task_scene.instantiate()
@@ -49,6 +51,7 @@ func add_timed_task(title: String, importance: Global.IMPORTANCE, minutes:int):
 	
 	task.hms_set = Vector3i(0, minutes, 0)
 	add_child(task)
+	task_created.emit(task)
 
 
 func remove_task(task_to_remove: Task):
