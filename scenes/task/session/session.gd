@@ -7,7 +7,8 @@ class_name Session extends Node2D
 @onready var timed_task_scene = preload("res://scenes/task/timed_task/timed_task.tscn")
 
 signal new_day()
-signal time_changed(task: Task, h: int, m: int, s: int)
+
+signal task_created(task: Task)
 
 func _on_child_entered_tree(node: Node) -> void:
 	if not node is Task: return
@@ -15,12 +16,12 @@ func _on_child_entered_tree(node: Node) -> void:
 	node.started.connect(stop_tasks)
 	node.failed.connect(pet.on_task_failed)
 	node.succeeded.connect(pet.on_task_succeeded)
-	node.time_changed.connect(on_task_time_changed)
+	# node.time_changed.connect(on_task_time_changed)
 	
 	new_day.connect(node.on_new_day)
 
-func on_task_time_changed(task: Task, h: int, m: int, s: int):
-	time_changed.emit(task, h, m, s)
+# func on_task_time_changed(task: Task, h: int, m: int, s: int):
+# 	time_changed.emit(task, h, m, s)
 
 func stop_tasks(started_task: Task):
 	for task in get_children():
@@ -41,6 +42,7 @@ func add_grind_task(title: String, importance: Global.IMPORTANCE, minutes:int):
 	task.goal_hms = Vector3i(0, minutes, 0)
 	task.goal_time = minutes * 60
 	add_child(task)
+	task_created.emit(task)
 
 func add_timed_task(title: String, importance: Global.IMPORTANCE, minutes:int):
 	var task = timed_task_scene.instantiate()
@@ -55,6 +57,7 @@ func add_timed_task(title: String, importance: Global.IMPORTANCE, minutes:int):
 	
 	task.hms_set = Vector3i(0, minutes, 0)
 	add_child(task)
+	task_created.emit(task)
 
 
 func remove_task(task_to_remove: Task):
