@@ -18,3 +18,6 @@ func _on_project_creator_new_project_name(name: String) -> void:
 
 func add_new_project_button(session_name: String):
 	side_bar.add_new_project_button(session_name)
+
+func _on_side_bar_project_selected(project_name: String) -> void:
+	pass # Replace with function body.

@@ -1,4 +1,9 @@
-[gd_scene format=3 uid="uid://bd5jwqd2poslr"]
+[gd_scene load_steps=2 format=3 uid="uid://bd5jwqd2poslr"]
+
+[ext_resource type="Script" uid="uid://cty606g3a751t" path="res://scenes/gui/sidebar/project_button.gd" id="1_ghnej"]
 
 [node name="ProjectButton" type="Button"]
 text = "Chores"
+script = ExtResource("1_ghnej")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -343,6 +343,7 @@ text = "Create new grind task"
 layout_mode = 2
 text = "Cancel"
 
+[connection signal="project_selected" from="MainDisplayContainer/SideBarContainer/SideBar" to="." method="_on_side_bar_project_selected"]
 [connection signal="prompted_new_project" from="MainDisplayContainer/SideBarContainer/SideBar" to="." method="_on_side_bar_prompted_new_project"]
 [connection signal="pressed" from="MainDisplayContainer/TaskContainer/AddTaskButton" to="." method="_on_add_task_button_pressed"]
 [connection signal="new_project_name" from="ProjectCreator" to="." method="_on_project_creator_new_project_name"]
